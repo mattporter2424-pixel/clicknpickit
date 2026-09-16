@@ -1,54 +1,17 @@
-# Click N' Pick It
+# Clickitpickit
 
-A static website for selling 3D-printed **play/novelty pocket knives** —
-balisong trainers, fidget-style folders, and cosplay props. No blades, no
-sharp edges, just fun printed pieces.
+A responsive static shop with original logo, a geometric 3D folding pocket-tool viewer, real supplied product photos, color selection, and a browser-local shopping bag.
 
-## What's here
+Confirmed pricing: USD $15 per tool and $4.99 flat shipping per order. Tax is not configured. Checkout is intentionally closed: no order is submitted, payment collected, inventory reserved, or customer address stored.
 
-- `index.html` – single-page site: hero, product catalog, "how it works",
-  a safety section, FAQ, and an order form.
-- `css/style.css` – all styling (dark, EDC-inspired theme).
-- `js/script.js` – mobile nav toggle, "Add to Order" quick-add, and the
-  order form (opens a pre-filled email — no backend or database needed).
+## Finish opening orders
 
-It's plain HTML/CSS/JS on purpose: **zero build step, zero hosting cost**.
-You can open `index.html` directly in a browser, or deploy it for free on
-GitHub Pages, Netlify, Vercel, or Cloudflare Pages.
+Get the parent-managed Venmo business username, order contact email, shipping area and dispatch timing. Wire an actual order intake service and parent-managed payment destination before enabling checkout. Keep order receipt and payment status separate: opening Venmo or a customer saying they paid is not payment verification. Square/Stripe can later replace the payment step with server-created checkout and verified payment webhooks.
 
-## Before you go live
+Confirm available colors and product age guidance with the maker. Do not advertise safety certification without supporting documentation. The 3D model is an illustration, not a manufacturing file. Real product photos remain the reference.
 
-1. **Set your real contact email.** Open `js/script.js` and change:
-   ```js
-   const ORDER_EMAIL = "orders@clicknpickit.example";
-   ```
-   to the address you want order requests sent to.
-2. **Swap in real product photos.** Each `.product-thumb` currently uses a
-   placeholder SVG icon — replace with `<img>` tags pointing at photos in
-   `images/` once you have them.
-3. **Update prices, models, and copy** in `index.html` to match your actual
-   lineup and pricing.
-4. **Double-check local rules** on selling knife-shaped novelty items —
-   messaging on the site already stresses these are blunt, non-functional
-   items for practice/cosplay/collecting, not weapons or tools.
+## Project
 
-## Deploying for free (GitHub Pages)
+Static publish directory: `dist`. Vercel configuration: `vercel.json`. Import this GitHub repository in Vercel with Framework Preset "Other"; the configuration serves `dist` without a build step. Scripts have no build-time dependencies. Run any static HTTP server against `dist` for local preview. Cart data stores only color indexes and quantities on the buyer's device.
 
-1. Push this repo to GitHub (already done if you're reading this from the repo).
-2. In the repo settings, go to **Pages** → set source to the `main`
-   (or your default) branch, root folder.
-3. GitHub will give you a `https://<user>.github.io/<repo>/` URL within a
-   minute or two.
-
-## Adding real checkout/payments later
-
-Right now orders go through a simple "email us" form — no payment
-processing, no ongoing fees. When you're ready to accept payments directly
-on the site, the most common low-cost paths are:
-
-- **Stripe Payment Links** or **Stripe Checkout** – no code required to get
-  started, small per-transaction fee only.
-- **Snipcart** or **Shopify Buy Button** – drop-in cart/checkout widgets
-  that work with a static site like this one.
-
-Ask and this can be wired in as a next step.
+`dist/assets/logo.png` is the reusable company logo. `dist/viewer.js` owns the folding animation and reduced-motion behavior. `dist/shop.js` owns pricing, cart, color choices, gallery, and feature-detected WebMCP tools.
